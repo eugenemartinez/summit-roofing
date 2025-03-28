@@ -210,11 +210,12 @@ const Testimonials = () => {
           </motion.p>
         </motion.div>
         
-        {/* Mobile testimonial slider with fixed height */}
+        {/* Updated Mobile testimonial slider with fixed height and improved layout */}
         <div className="md:hidden">
-          <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-hidden min-h-[350px]">
+          <div className="bg-white rounded-lg shadow-lg p-6 relative overflow-visible min-h-[400px]">
+            {/* Quote icon positioned properly with more space */}
             <motion.div 
-              className="absolute -top-5 left-6 bg-cta hover:bg-cta/90 rounded-full p-3 transition-all duration-300"
+              className="absolute -top-5 left-6 bg-cta hover:bg-cta/90 rounded-full p-3 transition-all duration-300 z-10"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ duration: 0.3 }}
             >
@@ -280,8 +281,9 @@ const Testimonials = () => {
                     {renderStars(testimonialData[currentSlide].rating)}
                   </motion.div>
                   
+                  {/* Shortened text container with proper spacing for navigation */}
                   <motion.p 
-                    className="text-accent max-h-[150px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+                    className="text-accent max-h-[160px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent mb-8"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
@@ -292,28 +294,72 @@ const Testimonials = () => {
               </AnimatePresence>
             </div>
             
-            {/* Navigation controls remain unchanged but positioned at fixed bottom */}
-            <div className="mt-[180px] flex justify-between">
+            {/* Updated navigation controls to match the dots style */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center items-center space-x-6">
               <motion.button 
                 onClick={prevSlide}
-                className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
+                className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 border border-gray-200 shadow-sm"
+                whileHover={{ scale: 1.1, backgroundColor: "#f3f4f6" }}
                 whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: 1 }}
               >
-                <FaChevronLeft className="h-5 w-5 text-primary" />
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5 text-primary" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" 
+                    clipRule="evenodd" 
+                  />
+                </svg>
               </motion.button>
+              
+              {/* Dot indicators in the middle */}
+              <div className="flex justify-center space-x-2">
+                {testimonialData.map((_, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => {
+                      setDirection(index > currentSlide ? 1 : -1);
+                      setCurrentSlide(index);
+                    }}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      currentSlide === index ? 'w-8 bg-cta' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    initial={{ opacity: 0.7 }}
+                    animate={{ opacity: 1 }}
+                  ></motion.button>
+                ))}
+              </div>
               
               <motion.button 
                 onClick={nextSlide}
-                className="bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors duration-300"
-                whileHover={{ scale: 1.1 }}
+                className="w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-all duration-300 border border-gray-200 shadow-sm"
+                whileHover={{ scale: 1.1, backgroundColor: "#f3f4f6" }}
                 whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0.8 }}
+                animate={{ opacity: 1 }}
               >
-                <FaChevronRight className="h-5 w-5 text-primary" />
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-5 w-5 text-primary" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+                    clipRule="evenodd" 
+                  />
+                </svg>
               </motion.button>
             </div>
-            
-            {/* Dots indicator remains unchanged */}
           </div>
         </div>
         
