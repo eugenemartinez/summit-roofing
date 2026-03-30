@@ -2,9 +2,9 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "theme/contact",
-  "title": "Contact",
+  "title": "Contact Form",
   "category": "theme",
-  "description": "Contact section with title, subtitle, description, email and location.",
+  "description": "Contact form with contact information and submission form",
   "supports": {
     "html": false,
     "inserter": true
@@ -12,7 +12,7 @@
   "attributes": {
     "title": {
       "type": "string",
-      "default": "Get in Touch"
+      "default": "Get Your Free Roofing Estimate"
     },
     "subtitle": {
       "type": "string",
@@ -20,15 +20,43 @@
     },
     "description": {
       "type": "string",
-      "default": "Have a project in mind? We would love to hear from you."
+      "default": "Fill out the form below and our team will get back to you within 24 hours to discuss your roofing needs."
+    },
+    "address": {
+      "type": "string",
+      "default": "123 Roofing Way, Anytown, ST 12345"
+    },
+    "phone": {
+      "type": "string",
+      "default": "(555) 123-4567"
     },
     "email": {
       "type": "string",
-      "default": "hello@yourbrand.com"
+      "default": "contact@summitroofing.com"
     },
-    "location": {
+    "hoursWeekday": {
       "type": "string",
-      "default": "Your City, Country"
+      "default": "Mon-Fri: 7am-6pm"
+    },
+    "hoursSaturday": {
+      "type": "string",
+      "default": "Sat: 8am-2pm"
+    },
+    "tagline": {
+      "type": "string",
+      "default": "Proudly serving homeowners throughout the region with quality roofing solutions."
+    },
+    "credentials": {
+      "type": "array",
+      "default": ["BBB Accredited", "Fully Insured", "Licensed Contractors"]
+    },
+    "serviceOptions": {
+      "type": "array",
+      "default": ["Roof Repair", "Roof Replacement", "Roof Inspection", "Gutter Installation", "Storm Damage Assessment", "Commercial Roofing", "Other Services"]
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Request Free Estimate"
     }
   },
   "editorScript": "file:./index.js",

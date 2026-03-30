@@ -1,0 +1,154 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "blocks/section-testimonials",
+  "version": "1.0.0",
+  "title": "Testimonials",
+  "category": "theme",
+  "description": "Testimonial cards grid (desktop) with mobile slider, star ratings, avatars, and review badges.",
+  "keywords": [
+    "testimonials",
+    "reviews",
+    "slider",
+    "cards"
+  ],
+  "textdomain": "blocks",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php",
+  "supports": {
+    "html": false,
+    "align": false,
+    "spacing": {
+      "padding": false,
+      "margin": false
+    }
+  },
+  "attributes": {
+    "eyebrowText": {
+      "type": "string",
+      "default": "Testimonials"
+    },
+    "heading": {
+      "type": "string",
+      "default": "What Our Customers Say"
+    },
+    "subheading": {
+      "type": "string",
+      "default": "Don't just take our word for it. Hear from homeowners and businesses who trust Summit Roofing for their roofing needs."
+    },
+    "testimonials": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "name": "Jennifer Thompson",
+          "location": "Westview, CA",
+          "rating": 5,
+          "text": "Summit Roofing replaced our entire roof after storm damage, and we couldn't be happier with the results. Their team was professional, efficient, and cleaned up thoroughly after the job. The new roof looks fantastic and has already protected us through several storms.",
+          "imageUrl": "https://randomuser.me/api/portraits/women/32.jpg",
+          "imageId": 0
+        },
+        {
+          "id": 2,
+          "name": "Robert Garcia",
+          "location": "Lakeside, CA",
+          "rating": 5,
+          "text": "I needed emergency repairs after a tree fell on my roof. Summit Roofing responded quickly, secured the damage, and completed the repairs within a week. Their pricing was transparent and fair, and the quality of work was excellent. I highly recommend their services.",
+          "imageUrl": "https://randomuser.me/api/portraits/men/45.jpg",
+          "imageId": 0
+        },
+        {
+          "id": 3,
+          "name": "Sarah Wilson",
+          "location": "Highland Heights, CA",
+          "rating": 5,
+          "text": "As a first-time homeowner, I was nervous about replacing my aging roof. Summit Roofing walked me through every step of the process, helped me select the perfect materials, and completed the work on schedule. My new roof is beautiful and I've already noticed improvements in my energy bills.",
+          "imageUrl": "https://randomuser.me/api/portraits/women/64.jpg",
+          "imageId": 0
+        },
+        {
+          "id": 4,
+          "name": "Michael Johnson",
+          "location": "Crestview, CA",
+          "rating": 4,
+          "text": "Summit Roofing installed a metal roof on our mountain cabin last year. Despite challenging weather conditions and difficult access, they completed the project professionally and efficiently. The roof has held up perfectly through winter storms and high winds.",
+          "imageUrl": "https://randomuser.me/api/portraits/men/22.jpg",
+          "imageId": 0
+        },
+        {
+          "id": 5,
+          "name": "Emily Rodriguez",
+          "location": "Riverdale, CA",
+          "rating": 5,
+          "text": "We hired Summit Roofing for our office building's roof replacement. Their commercial team minimized disruption to our business operations and delivered exceptional results. The project manager kept us informed throughout the entire process, and they even finished ahead of schedule.",
+          "imageUrl": "https://randomuser.me/api/portraits/women/45.jpg",
+          "imageId": 0
+        },
+        {
+          "id": 6,
+          "name": "David Chen",
+          "location": "Oak Hills, CA",
+          "rating": 5,
+          "text": "After getting quotes from several companies, we chose Summit Roofing for their competitive pricing and outstanding reviews. They didn't disappoint! The crew was respectful of our property, the workmanship is excellent, and they honored every aspect of their warranty when we had a minor issue.",
+          "imageUrl": "https://randomuser.me/api/portraits/men/33.jpg",
+          "imageId": 0
+        }
+      ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "number"
+          },
+          "text": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "imageId": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "reviewScore": {
+      "type": "string",
+      "default": "4.9/5.0"
+    },
+    "reviewCount": {
+      "type": "string",
+      "default": "Based on 150+ Reviews"
+    },
+    "bbbRating": {
+      "type": "string",
+      "default": "A+ Rating"
+    },
+    "bbbLabel": {
+      "type": "string",
+      "default": "Better Business Bureau"
+    },
+    "yearsTitle": {
+      "type": "string",
+      "default": "20+ Years"
+    },
+    "yearsLabel": {
+      "type": "string",
+      "default": "Serving our community"
+    },
+    "autoAdvanceDelay": {
+      "type": "number",
+      "default": 6000
+    }
+  }
+}

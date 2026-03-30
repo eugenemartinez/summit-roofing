@@ -1,0 +1,117 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "theme/why-choose-us",
+  "title": "Why Choose Us",
+  "category": "theme",
+  "description": "Why Choose Us section with image/text pairs and benefits grid",
+  "supports": {
+    "html": false,
+    "inserter": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "What Sets Summit Roofing Apart"
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "Why Choose Us"
+    },
+    "description": {
+      "type": "string",
+      "default": "When you choose Summit Roofing, you get more than just a roofing contractor. You get a dedicated partner committed to quality, integrity, and excellence."
+    },
+    "section1Title": {
+      "type": "string",
+      "default": "Professional Team With Years of Experience"
+    },
+    "section1Description": {
+      "type": "string",
+      "default": "Our team consists of certified roofing professionals who take pride in their craft. With decades of combined experience, we handle everything from simple repairs to complex installations with precision and care."
+    },
+    "section1Image": {
+      "type": "string",
+      "default": "https://images.unsplash.com/photo-1643225523483-e2c434191bba?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    },
+    "section1Points": {
+      "type": "array",
+      "default": [
+        "Fully licensed, bonded, and insured",
+        "Continuous training on latest techniques",
+        "Background-checked and professional crew"
+      ]
+    },
+    "section2Title": {
+      "type": "string",
+      "default": "Premium Materials & Lasting Results"
+    },
+    "section2Description": {
+      "type": "string",
+      "default": "We partner with leading manufacturers to provide the highest quality materials for your roof. From traditional asphalt shingles to cutting-edge synthetic options, we offer durable solutions that stand the test of time."
+    },
+    "section2Image": {
+      "type": "string",
+      "default": "https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=2574"
+    },
+    "section2Points": {
+      "type": "array",
+      "default": [
+        "Top-rated materials from trusted suppliers",
+        "Energy-efficient and environmentally friendly options",
+        "Extended manufacturer warranties"
+      ]
+    },
+    "benefits": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "title": "Quality Materials",
+          "description": "We use only premium roofing materials from trusted manufacturers, ensuring durability and long-lasting performance for your roof.",
+          "icon": "medal"
+        },
+        {
+          "id": 2,
+          "title": "Expert Craftsmanship",
+          "description": "Our team consists of skilled professionals with years of experience and continuous training in the latest roofing techniques.",
+          "icon": "briefcase"
+        },
+        {
+          "id": 3,
+          "title": "Competitive Pricing",
+          "description": "We offer transparent, fair pricing with no hidden fees or surprises, plus flexible financing options to fit your budget.",
+          "icon": "dollar-sign"
+        },
+        {
+          "id": 4,
+          "title": "Timely Service",
+          "description": "We respect your schedule and complete projects efficiently without sacrificing quality or cutting corners.",
+          "icon": "clock"
+        },
+        {
+          "id": 5,
+          "title": "Comprehensive Warranties",
+          "description": "Our work is backed by industry-leading warranties on both materials and workmanship for your peace of mind.",
+          "icon": "shield"
+        },
+        {
+          "id": 6,
+          "title": "Customer Satisfaction",
+          "description": "We're not satisfied until you are. Our commitment to customer service has earned us hundreds of positive reviews.",
+          "icon": "thumbs-up"
+        }
+      ]
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Experience the Summit Difference"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#contact"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}

@@ -1,14 +1,95 @@
 {
   "apiVersion": 3,
   "name": "theme/work",
-  "title": "Work",
+  "title": "Our Work",
   "category": "theme",
-  "description": "Capabilities showcase with animated icons",
-  "supports": { "html": false },
+  "description": "Portfolio showcase with category filtering and project modal",
+  "supports": {
+    "html": false,
+    "align": false,
+    "spacing": {
+      "padding": false,
+      "margin": false
+    }
+  },
   "attributes": {
-    "title": { "type": "string", "default": "What We Do" },
-    "subtitle": { "type": "string", "default": "Capabilities" },
-    "description": { "type": "string", "default": "We craft digital experiences that move — from strategy to execution, every detail is intentional." }
+    "title": {
+      "type": "string",
+      "default": "Featured Roofing Projects"
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "Our Portfolio"
+    },
+    "description": {
+      "type": "string",
+      "default": "Browse through our completed projects to see the quality and craftsmanship we bring to every roof."
+    },
+    "categories": {
+      "type": "array",
+      "default": ["All", "Residential", "Commercial", "Repairs", "Metal Roofing"]
+    },
+    "projects": {
+      "type": "array",
+      "default": [
+        {
+          "id": 1,
+          "title": "Modern Home Shingle Installation",
+          "category": "Residential",
+          "description": "Complete roof replacement with premium architectural shingles for this modern family home.",
+          "image": "https://images.pexels.com/photos/15421142/pexels-photo-15421142/free-photo-of-tiles-on-house-roof.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "location": "Lakeside, CA"
+        },
+        {
+          "id": 2,
+          "title": "Commercial Office Complex",
+          "category": "Commercial",
+          "description": "New TPO roofing system for a 15,000 sq ft office complex with improved insulation and drainage.",
+          "image": "https://images.pexels.com/photos/986829/pexels-photo-986829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "location": "Downtown Metro"
+        },
+        {
+          "id": 3,
+          "title": "Storm Damage Restoration",
+          "category": "Repairs",
+          "description": "Emergency roof repair after severe wind damage, including structural reinforcement and shingle replacement.",
+          "image": "https://images.pexels.com/photos/17931269/pexels-photo-17931269/free-photo-of-destroyed-house-in-village.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          "location": "Highland Heights"
+        },
+        {
+          "id": 4,
+          "title": "Standing Seam Metal Roof",
+          "category": "Metal Roofing",
+          "description": "Custom metal roofing installation with seamless gutters and snow guards for this mountain retreat.",
+          "image": "https://images.unsplash.com/photo-1628002881911-8bcdfbdf320e?q=80&w=902&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "location": "Mountain View"
+        },
+        {
+          "id": 5,
+          "title": "Craftsman Style Home",
+          "category": "Residential",
+          "description": "Complete tear-off and replacement with architectural shingles that complement the craftsman aesthetic.",
+          "image": "https://images.unsplash.com/photo-1713789271157-5cebf11b961e?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "location": "Heritage District"
+        },
+        {
+          "id": 6,
+          "title": "Retail Shopping Center",
+          "category": "Commercial",
+          "description": "Large-scale commercial roofing project featuring energy-efficient materials and built-up membrane system.",
+          "image": "https://images.unsplash.com/photo-1525478440856-b40668b83b79?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          "location": "Commerce Square"
+        }
+      ]
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Request Your Free Estimate"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#contact"
+    }
   },
   "textdomain": "theme",
   "editorScript": "file:./index.js",

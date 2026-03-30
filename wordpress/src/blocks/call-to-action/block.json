@@ -1,0 +1,65 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "summit-roofing/call-to-action",
+	"version": "1.0.0",
+	"title": "Call to Action",
+	"category": "summit-roofing",
+	"description": "A compelling call-to-action section with gradient background, buttons, and trust indicators",
+	"supports": {
+		"html": false,
+		"align": ["full"],
+		"anchor": true
+	},
+	"attributes": {
+		"heading": {
+			"type": "string",
+			"default": "Ready for a Roof That <span class=\"text-cta\">Lasts</span>?<br /> Get Your Free Estimate Today"
+		},
+		"subheading": {
+			"type": "string",
+			"default": "Don't wait until leaks or damage worsen. Our team of experts is ready to provide you with a detailed assessment and competitive quote for your roofing project."
+		},
+		"primaryButtonText": {
+			"type": "string",
+			"default": "Request Free Estimate"
+		},
+		"primaryButtonUrl": {
+			"type": "string",
+			"default": "#contact"
+		},
+		"secondaryButtonText": {
+			"type": "string",
+			"default": "Call Us Now"
+		},
+		"secondaryButtonPhone": {
+			"type": "string",
+			"default": "tel:+15551234567"
+		},
+		"trustIndicators": {
+			"type": "array",
+			"default": [
+				{ "icon": "shield", "text": "No Obligation Quotes" },
+				{ "icon": "clock", "text": "Fast Response Time" },
+				{ "icon": "dollar-sign", "text": "Financing Available" }
+			]
+		},
+		"socialProofText": {
+			"type": "string",
+			"default": "We've completed over 1,500 projects with a 4.9/5 customer satisfaction rating!"
+		},
+		"projectsCompleted": {
+			"type": "string",
+			"default": "1,500"
+		},
+		"rating": {
+			"type": "string",
+			"default": "4.9/5"
+		}
+	},
+	"textdomain": "summit-roofing",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}
+

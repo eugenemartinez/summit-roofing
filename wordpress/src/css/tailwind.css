@@ -2,17 +2,38 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
+  /* ── Background & Foreground ── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* ── Brand Colors ── */
   --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
   --color-secondary: var(--secondary);
-  --color-tertiary: var(--accent);
+  --color-secondary-foreground: var(--secondary-foreground);
+  
+  /* ── Accent (Charcoal/Slate) ── */
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  /* ── CTA (Action Red) ── */
+  --color-cta: var(--cta);
+  --color-cta-foreground: var(--cta-foreground);
+
+  /* ── UI Components ── */
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-destructive: var(--destructive);
+
+  /* ── RGB Helpers (For Opacity/Glows) ── */
+  --color-primary-rgb: var(--primary-rgb);
+  --color-cta-rgb: var(--cta-rgb);
+
+  /* ── Radius Scale ── */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

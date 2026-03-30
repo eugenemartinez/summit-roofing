@@ -1,45 +1,78 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "theme/about",
-  "title": "About",
-  "category": "theme",
-  "description": "About section with image, title, description and CTA.",
-  "supports": {
-    "html": false,
-    "inserter": true
-  },
-  "attributes": {
-    "title": {
-      "type": "string",
-      "default": "About Us"
-    },
-    "subtitle": {
-      "type": "string",
-      "default": "Who We Are"
-    },
-    "description": {
-      "type": "string",
-      "default": "Tell your story here. Who you are, what you do, and why you do it."
-    },
-    "description2": {
-      "type": "string",
-      "default": "Add a second paragraph to elaborate on your mission, values, or approach."
-    },
-    "ctaText": {
-      "type": "string",
-      "default": "Work With Us"
-    },
-    "ctaUrl": {
-      "type": "string",
-      "default": "/contact"
-    },
-    "image": {
-      "type": "number",
-      "default": 0
-    }
-  },
-  "editorScript": "file:./index.js",
-  "viewScript": "file:./view.js",
-  "render": "file:./render.php"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "blocks/section",
+	"title": "About",
+	"category": "theme",
+	"description": "Two-column about section with image, badge, feature list, and CTA link.",
+	"keywords": ["about", "section", "features", "team"],
+	"textdomain": "blocks",
+	"supports": {
+		"html": false,
+		"align": false,
+		"customClassName": false
+	},
+	"attributes": {
+		"image": {
+			"type": "object",
+			"default": {
+				"url": "https://images.unsplash.com/photo-1504307651254-35680f356dfd",
+				"alt": "Our team at work",
+				"id": null
+			}
+		},
+		"badgeNumber": {
+			"type": "string",
+			"default": "20+"
+		},
+		"badgeLabel": {
+			"type": "string",
+			"default": "Years Experience"
+		},
+		"eyebrow": {
+			"type": "string",
+			"default": "About Us"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Your Trusted Local Roofing Experts Since 2003"
+		},
+		"body": {
+			"type": "string",
+			"default": "At Summit Roofing, we\u2019ve built our reputation on quality craftsmanship, honest pricing, and exceptional customer service. Our team of experienced professionals is dedicated to providing top-tier roofing solutions for both residential and commercial properties."
+		},
+		"features": {
+			"type": "array",
+			"default": [
+				{
+					"title": "Expert Installation",
+					"description": "Trained professionals with meticulous attention to detail"
+				},
+				{
+					"title": "Quality Materials",
+					"description": "Premium products from trusted manufacturers"
+				},
+				{
+					"title": "Comprehensive Warranty",
+					"description": "Peace of mind with our workmanship guarantee"
+				},
+				{
+					"title": "Free Inspections",
+					"description": "Thorough assessments with no obligation"
+				}
+			]
+		},
+		"ctaText": {
+			"type": "string",
+			"default": "Explore Our Services"
+		},
+		"ctaUrl": {
+			"type": "string",
+			"default": "#services"
+		}
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
 }
+

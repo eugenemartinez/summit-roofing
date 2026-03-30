@@ -1,37 +1,66 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --font-size: 16px;
+  /* ── Typography ── */
+  --font-size: 14px;
   --font-headline: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* ── Static tokens ── */
-  --border: rgba(255, 255, 255, 0.1);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
+  /* ── Brand Colors (Synced with index.css @theme) ── */
+  --background: #ffffff;
+  --foreground: #1E3A5F; /* Primary Navy */
+  
+  --primary: #1E3A5E;    /* Deep navy blue */
+  --primary-foreground: #ffffff;
+  
+  --secondary: #A74A41;  /* Terracotta/brick red */
+  --secondary-foreground: #ffffff;
+
+  --accent: #36454F;     /* Charcoal */
+  --accent-foreground: #ffffff;
+
+  --cta: #D86A6A;        /* Brighter red for actions */
+  --cta-foreground: #ffffff;
+
+  /* ── UI Tokens ── */
+  --border: rgba(30, 58, 95, 0.1);
+  --muted: #F5F5F5;      /* Neutral-bg from index */
+  --muted-foreground: #64748b;
+  --card: #ffffff;
+  --card-foreground: #1E3A5F;
+  
   --destructive: #d4183d;
   --radius: 0.625rem;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
 
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --primary: #7c3aed;
-  --secondary: #db2777;
-  --accent: #ea580c;
+  /* RGB Helpers for Tailwind Opacity (e.g., bg-primary/20) */
+  --primary-rgb: 30, 58, 95;
+  --cta-rgb: 216, 106, 106;
 }
 
+/* ── Dark Mode (Prepared for "Blue Hour" aesthetic) ── */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --border: oklch(0.269 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
+  --background: #0a111a; /* Deeper Navy */
+  --foreground: #f1f5f9;
+  
+  --primary: #335b8e;    /* Lighter Navy for contrast */
+  --primary-foreground: #ffffff;
+  
+  --secondary: #c25e54;  /* Desaturated Terracotta */
+  --secondary-foreground: #ffffff;
+
+  --cta: #e38686;        /* Luminous Red */
+  --cta-foreground: #0a111a;
+
+  --card: #121d2b;
+  --card-foreground: #f1f5f9;
+  
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  
+  --border: rgba(255, 255, 255, 0.1);
+  --destructive: #ef4444;
 }
 
 @layer base {
@@ -52,6 +81,7 @@
 
   html {
     font-size: var(--font-size);
+    scroll-behavior: auto !important;
   }
 
   h1,
@@ -125,6 +155,17 @@
   .bg-muted,
   .bg-foreground {
     transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  a, 
+  .nav-link, 
+  .mobile-nav-link {
+    text-decoration: none !important;
+    text-decoration-line: none !important; 
+  }
+
+  .header-logo-wrapper * {
+    text-decoration: none !important;
   }
 
   [data-motion*="hover-glow"],

@@ -21,25 +21,39 @@ export function initPageTransition() {
 	);
 
 	document.querySelectorAll("a[href]").forEach((link) => {
-		const href = link.getAttribute("href");
-
-		if (
-			!href ||
-			href.startsWith("#") ||
-			href.startsWith("mailto") ||
-			href.startsWith("tel") ||
-			link.hasAttribute("target")
-		)
-			return;
-
-		if (href.startsWith("http") && !href.startsWith(window.location.origin))
-			return;
-
 		link.addEventListener("click", (e) => {
+			const href = link.getAttribute("href");
+			const url = new URL(link.href, window.location.origin);
+
+			// 1. THE BAIL-OUT CHECKS
+			// Ignore hashes, mailto, tel, or external targets
+			if (
+				!href ||
+				href.startsWith("#") ||
+				href.startsWith("mailto") ||
+				href.startsWith("tel") ||
+				link.hasAttribute("target")
+			)
+				return;
+
+			// 2. SAME-PAGE CHECK (The Culprit)
+			// If the URL (without the hash) is the same as the current page,
+			// do NOT trigger the transition.
+			const isSamePage =
+				url.pathname === window.location.pathname &&
+				url.hostname === window.location.hostname;
+
+			if (isSamePage && url.hash) {
+				return; // Let navigation.js handle the smooth scroll
+			}
+
+			// 3. EXTERNAL CHECK
+			if (url.origin !== window.location.origin) return;
+
+			// 4. TRIGGER TRANSITION
 			e.preventDefault();
 			const destination = link.href;
 
-			// Enter animation — slide overlay up from bottom, then navigate
 			animate(
 				overlay,
 				{ y: ["100%", "0%"] },
@@ -49,5 +63,11 @@ export function initPageTransition() {
 			});
 		});
 	});
-}
 
+	window.addEventListener("pageshow", (event) => {
+		// if event.persisted is true, the page was loaded from the BFCache (back button)
+		if (event.persisted) {
+			animate(overlay, { y: "-100%" }, { duration: 0.3 });
+		}
+	});
+}

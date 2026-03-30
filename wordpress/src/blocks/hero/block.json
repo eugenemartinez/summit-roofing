@@ -1,49 +1,54 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "theme/hero",
-  "title": "Hero",
-  "category": "theme",
-  "description": "Hero section with title, subtitle, description and CTA.",
-  "supports": {
-    "html": false,
-    "inserter": true
-  },
-  "attributes": {
-    "title": {
-      "type": "string",
-      "default": "Your Headline Here"
-    },
-    "titleSpan": {
-      "type": "string",
-      "default": "Highlighted Word"
-    },
-    "subtitle": {
-      "type": "string",
-      "default": "Your subtitle here"
-    },
-    "description": {
-      "type": "string",
-      "default": "A brief description of what you do and who you serve."
-    },
-    "ctaText": {
-      "type": "string",
-      "default": "Get in Touch"
-    },
-    "ctaUrl": {
-      "type": "string",
-      "default": "/contact"
-    },
-    "backgroundImage": {
-      "type": "number",
-      "default": 0
-    },
-    "overlayOpacity": {
-      "type": "number",
-      "default": 50
-    }
-  },
-  "editorScript": "file:./index.js",
-  "viewScript": "file:./view.js",
-  "render": "file:./render.php"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "theme/hero",
+	"title": "Hero",
+	"category": "theme",
+	"description": "Full-width hero section with background image, headline, two CTAs, and trust indicators.",
+	"supports": {
+		"html": false,
+		"inserter": true,
+		"align": ["full"]
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Quality Roofing Solutions for Every Home"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": "Professional roof installation, repair, and maintenance services with over 20 years of experience."
+		},
+		"primaryButtonText": {
+			"type": "string",
+			"default": "Get Free Estimate"
+		},
+		"primaryButtonUrl": {
+			"type": "string",
+			"default": "#contact"
+		},
+		"secondaryButtonText": {
+			"type": "string",
+			"default": "Our Services"
+		},
+		"secondaryButtonUrl": {
+			"type": "string",
+			"default": "#services"
+		},
+		"backgroundImage": {
+			"type": "number",
+			"default": 0
+		},
+		"backgroundImageUrl": {
+			"type": "string",
+			"default": "https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg"
+		},
+		"overlayOpacity": {
+			"type": "number",
+			"default": 50
+		}
+	},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
 }

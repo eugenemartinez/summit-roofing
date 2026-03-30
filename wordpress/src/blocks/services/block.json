@@ -1,53 +1,166 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "theme/services",
-  "title": "Services",
-  "category": "theme",
-  "description": "Services section with title, subtitle, description and service cards.",
-  "supports": {
-    "html": false,
-    "inserter": true
-  },
-  "attributes": {
-    "title": {
-      "type": "string",
-      "default": "Our Services"
-    },
-    "subtitle": {
-      "type": "string",
-      "default": "What We Offer"
-    },
-    "description": {
-      "type": "string",
-      "default": "Here is a brief description of the services we offer."
-    },
-    "service1Title": {
-      "type": "string",
-      "default": "Service One"
-    },
-    "service1Desc": {
-      "type": "string",
-      "default": "Brief description of your first service offering."
-    },
-    "service2Title": {
-      "type": "string",
-      "default": "Service Two"
-    },
-    "service2Desc": {
-      "type": "string",
-      "default": "Brief description of your second service offering."
-    },
-    "service3Title": {
-      "type": "string",
-      "default": "Service Three"
-    },
-    "service3Desc": {
-      "type": "string",
-      "default": "Brief description of your third service offering."
-    }
-  },
-  "editorScript": "file:./index.js",
-  "viewScript": "file:./view.js",
-  "render": "file:./render.php"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "blocks/section-services",
+	"version": "1.0.0",
+	"title": "Services",
+	"category": "theme",
+	"description": "Service cards grid with icon, title, description, feature list, and a bottom CTA banner.",
+	"keywords": ["services", "cards", "grid", "roofing"],
+	"textdomain": "blocks",
+	"editorScript": "file:./index.js",
+	"render": "file:./render.php",
+	"supports": {
+		"html": false,
+		"align": false,
+		"spacing": {
+			"padding": false,
+			"margin": false
+		}
+	},
+	"attributes": {
+		"eyebrowText": {
+			"type": "string",
+			"default": "Our Services"
+		},
+
+		"heading": {
+			"type": "string",
+			"default": "Comprehensive Roofing Solutions"
+		},
+
+		"subheading": {
+			"type": "string",
+			"default": "From installation to repairs, we provide expert roofing services for residential and commercial properties."
+		},
+
+		"services": {
+			"type": "array",
+			"default": [
+				{
+					"id": 1,
+					"icon": "home",
+					"title": "Residential Roofing",
+					"description": "Complete roofing solutions for homeowners, including installation, replacement, and maintenance of asphalt shingles, metal roofing, tile, and more.",
+					"features": [
+						"Architectural shingles",
+						"Metal roof installation",
+						"Cedar shake roofs",
+						"Tile and slate options",
+						"Energy-efficient materials"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				},
+				{
+					"id": 2,
+					"icon": "building",
+					"title": "Commercial Roofing",
+					"description": "Professional roofing systems for businesses, warehouses, and commercial properties with minimal disruption to your operations.",
+					"features": [
+						"TPO & EPDM systems",
+						"Built-up roofing (BUR)",
+						"Modified bitumen",
+						"Green roof installations",
+						"Preventative maintenance plans"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				},
+				{
+					"id": 3,
+					"icon": "tools",
+					"title": "Roof Repairs",
+					"description": "Fast, reliable repair services to fix leaks, damage, and wear to extend your roof's lifespan and prevent water damage.",
+					"features": [
+						"Leak detection & repair",
+						"Shingle replacement",
+						"Flashing repair",
+						"Valley repair",
+						"Emergency repair services"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				},
+				{
+					"id": 4,
+					"icon": "clipboard",
+					"title": "Roof Inspections",
+					"description": "Thorough assessments of your roof's condition with detailed reports and recommendations for maintenance or repairs.",
+					"features": [
+						"Comprehensive evaluation",
+						"Written inspection reports",
+						"Insurance claim assistance",
+						"Preventative maintenance",
+						"Real estate inspections"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				},
+				{
+					"id": 5,
+					"icon": "storm",
+					"title": "Storm Damage Repair",
+					"description": "Specialized repair services for roofs damaged by severe weather, including wind, hail, and falling debris.",
+					"features": [
+						"Emergency tarping",
+						"Hail damage assessment",
+						"Wind damage repair",
+						"Insurance claim support",
+						"24/7 emergency response"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				},
+				{
+					"id": 6,
+					"icon": "leaf",
+					"title": "Gutter Services",
+					"description": "Installation, repair, and maintenance of gutters and downspouts to protect your property from water damage.",
+					"features": [
+						"Seamless gutter installation",
+						"Gutter guards",
+						"Downspout installation",
+						"Gutter cleaning",
+						"Repairs & maintenance"
+					],
+					"ctaText": "Get a Quote",
+					"ctaUrl": "#contact"
+				}
+			],
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": { "type": "number" },
+					"icon": { "type": "string" },
+					"title": { "type": "string" },
+					"description": { "type": "string" },
+					"features": { "type": "array", "items": { "type": "string" } },
+					"ctaText": { "type": "string" },
+					"ctaUrl": { "type": "string" }
+				}
+			}
+		},
+
+		"bannerHeading": {
+			"type": "string",
+			"default": "Not sure which service you need?"
+		},
+
+		"bannerSubtext": {
+			"type": "string",
+			"default": "Our experts can assess your roofing needs and recommend the best solution."
+		},
+
+		"bannerCtaText": {
+			"type": "string",
+			"default": "Schedule a Free Consultation"
+		},
+
+		"bannerCtaUrl": {
+			"type": "string",
+			"default": "#contact"
+		}
+	}
 }
+

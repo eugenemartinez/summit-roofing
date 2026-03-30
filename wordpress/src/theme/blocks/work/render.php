@@ -1,159 +1,313 @@
 <?php
-$title       = $attributes['title'] ?? 'What We Do';
-$subtitle    = $attributes['subtitle'] ?? 'Capabilities';
-$description = $attributes['description'] ?? 'We craft digital experiences that move — from strategy to execution, every detail is intentional.';
-
-$capabilities = [
-  [
-    'label'     => 'Brand Strategy',
-    'animation' => 'float',
-    'delay'     => '0',
-    'duration'  => '3',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  ],
-  [
-    'label'     => 'Web Development',
-    'animation' => 'pulse',
-    'delay'     => '0.5',
-    'duration'  => '2',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-  ],
-  [
-    'label'     => 'Motion Design',
-    'animation' => 'spin',
-    'delay'     => '0',
-    'duration'  => '8',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>',
-  ],
-  [
-    'label'     => 'UI / UX Design',
-    'animation' => 'bounce',
-    'delay'     => '0.3',
-    'duration'  => '0.8',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>',
-  ],
-  [
-    'label'     => 'Performance',
-    'animation' => 'heartbeat',
-    'delay'     => '0',
-    'duration'  => '0.4',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>',
-  ],
-  [
-    'label'     => 'SEO & Growth',
-    'animation' => 'wiggle',
-    'delay'     => '0.2',
-    'duration'  => '0.15',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>',
-  ],
-  [
-    'label'     => 'Live Updates',
-    'animation' => 'ping',
-    'delay'     => '0',
-    'duration'  => '1.2',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.24a6 6 0 0 1 0-8.49M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>',
-  ],
-  [
-    'label'     => 'Copywriting',
-    'animation' => 'float',
-    'delay'     => '1',
-    'duration'  => '4',
-    'y'         => '-15',
-    'icon'      => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>',
-  ],
+// Extract attributes with defaults
+$title = $attributes["title"] ?? "Our Work";
+$subtitle = $attributes["subtitle"] ?? "Portfolio";
+$description =
+    $attributes["description"] ??
+    "Explore our recent projects and see how we transform spaces with quality craftsmanship and attention to detail.";
+$categories = $attributes["categories"] ?? [
+    "All",
+    "Residential",
+    "Commercial",
+    "Repairs",
+    "Metal Roofing",
 ];
+$projects = $attributes["projects"] ?? [];
+$ctaText = $attributes["ctaText"] ?? "View All Projects";
+$ctaUrl = $attributes["ctaUrl"] ?? "#contact";
+
+// Generate unique IDs for this block instance
+$blockId = "work-" . wp_unique_id();
+$modalId = $blockId . "-modal";
 ?>
 
-<section class="relative bg-foreground text-background py-24 md:py-32 overflow-hidden">
+<section id="projects" class="overflow-hidden relative py-16 bg-white md:py-24" data-block-id="<?php echo esc_attr(
+    $blockId,
+); ?>">
 
-  <!-- Background noise texture -->
-  <div class="absolute inset-0 opacity-5 pointer-events-none"
-    style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noise%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noise)%22/%3E%3C/svg%3E');"></div>
+  <!-- Background elements -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 right-0 rounded-full translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px]"
+         data-motion="blob" data-duration="20" data-scale="1.3" data-x="40" data-y="20"></div>
+    <div class="absolute bottom-0 left-0 rounded-full -translate-x-1/2 translate-y-1/2 w-[400px] h-[400px] bg-primary/5 blur-[100px]"
+         data-motion="blob" data-duration="25" data-scale="1.2" data-x="-30" data-y="-20" data-delay="3"></div>
+  </div>
 
-  <!-- Decorative blobs -->
-  <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2"
-    data-motion="blob" data-duration="20" data-scale="1.3" data-x="40" data-y="20"></div>
-  <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] pointer-events-none translate-y-1/2 -translate-x-1/2"
-    data-motion="blob" data-duration="25" data-scale="1.2" data-x="-30" data-y="-20" data-delay="3"></div>
-
-  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
     <!-- Header -->
-    <div class="max-w-2xl mb-20">
-      <p
-        class="text-xs uppercase tracking-[0.3em] font-semibold text-primary mb-4"
-        data-motion="fade-up"
-        data-delay="0.1">
-        <?php echo esc_html($subtitle); ?>
-      </p>
-      <h2
-        class="text-5xl md:text-6xl lg:text-7xl font-bold text-background leading-[0.9] tracking-tight mb-6"
-        data-motion="fade-up"
-        data-delay="0.2">
+    <div class="mb-12 text-center md:mb-16">
+      <div class="flex justify-center items-center mb-4" data-motion="fade-up" data-delay="0.1">
+        <div class="mr-4 w-12 h-1 rounded-full bg-cta"></div>
+        <span class="text-sm font-semibold tracking-wider uppercase text-accent"><?php echo esc_html(
+            $subtitle,
+        ); ?></span>
+        <div class="ml-4 w-12 h-1 rounded-full bg-cta"></div>
+      </div>
+      <h2 class="mb-6 text-3xl font-bold leading-tight md:text-4xl lg:text-5xl text-primary"
+          data-motion="fade-up" data-delay="0.2">
         <?php echo esc_html($title); ?>
       </h2>
-      <p
-        class="text-background/50 text-lg leading-relaxed"
-        data-motion="fade-up"
-        data-delay="0.3">
+      <p class="mx-auto max-w-2xl text-lg leading-relaxed text-accent"
+         data-motion="fade-up" data-delay="0.3">
         <?php echo esc_html($description); ?>
       </p>
     </div>
 
-    <!-- Capabilities grid -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-      <?php foreach ($capabilities as $i => $cap) :
-        $delay    = (float)($cap['delay'] ?? 0) + 0.4;
-        $anim     = $cap['animation'];
-        $duration = $cap['duration'] ?? '1';
-        $y        = $cap['y'] ?? '-20';
-      ?>
-        <div
-          class="group relative bg-background/5 hover:bg-background/10 border border-background/10 hover:border-primary/40 rounded-2xl p-6 transition-colors duration-300 cursor-default overflow-hidden"
-          data-motion="fade-up"
-          data-scroll="true"
-          data-delay="<?php echo $delay; ?>">
-
-          <!-- Animated icon -->
-          <div
-            class="w-12 h-12 text-secondary mb-4"
-            data-motion="<?php echo esc_attr($anim); ?>"
-            data-duration="<?php echo esc_attr($duration); ?>"
-            <?php if ($anim === 'float') : ?>data-y="<?php echo esc_attr($y); ?>"<?php endif; ?>
-            <?php if (!empty($cap['delay'])) : ?>data-delay="<?php echo esc_attr($cap['delay']); ?>"<?php endif; ?>>
-            <?php echo $cap['icon']; ?>
-          </div>
-
-          <!-- Label -->
-          <p class="text-background/80 font-semibold text-sm leading-snug">
-            <?php echo esc_html($cap['label']); ?>
-          </p>
-
-          <!-- Animation name badge -->
-          <span class="absolute top-3 right-3 text-[10px] font-mono text-background/20 group-hover:text-primary/50 transition-colors">
-            <?php echo esc_html($anim); ?>
-          </span>
-
-        </div>
+    <!-- Category filters -->
+    <div class="flex flex-wrap gap-3 justify-center mb-12" data-motion="fade-up" data-delay="0.4">
+      <?php foreach ($categories as $index => $category): ?>
+        <button
+          class="category-filter px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200 hover:border-primary hover:bg-primary hover:text-white <?php echo $index ===
+          0
+              ? "bg-primary text-white border-primary"
+              : "bg-white text-accent"; ?>"
+          data-category="<?php echo esc_attr(
+              strtolower(str_replace(" ", "-", $category)),
+          ); ?>">
+          <?php echo esc_html($category); ?>
+        </button>
       <?php endforeach; ?>
     </div>
 
-    <!-- Bottom CTA -->
-    <div
-      class="mt-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pt-12 border-t border-background/10"
-      data-motion="fade-up"
-      data-scroll="true">
-      <p class="text-background/40 text-sm max-w-md">
-        Every animation above is powered by a single <code class="text-primary font-mono">data-motion</code> attribute — no custom JS required.
-      </p>
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 gap-8 mb-16 md:grid-cols-2 lg:grid-cols-3" id="<?php echo esc_attr(
+        $blockId,
+    ); ?>-grid">
+      <?php foreach ($projects as $index => $project):
+
+          $delay = 0.5 + $index * 0.1;
+          $categorySlug = strtolower(
+              str_replace(" ", "-", $project["category"]),
+          );
+          ?>
+        <div
+          class="overflow-hidden bg-white rounded-lg shadow-lg transition-all duration-300 transform cursor-pointer hover:shadow-xl hover:-translate-y-2 project-card group"
+          data-category="<?php echo esc_attr($categorySlug); ?>"
+          data-project-id="<?php echo esc_attr($project["id"]); ?>"
+          data-motion="fade-up"
+          data-scroll="true"
+          data-delay="<?php echo esc_attr($delay); ?>">
+
+          <!-- Project image -->
+          <div class="overflow-hidden relative h-64 group">
+            <?php if (!empty($project["image"])): ?>
+              <img
+                src="<?php echo esc_url($project["image"]); ?>"
+                alt="<?php echo esc_attr($project["title"]); ?>"
+                class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="flex justify-center items-center w-full h-full bg-gray-200" style="display: none;">
+                <i data-lucide="search" class="w-12 h-12 text-gray-400"></i>
+              </div>
+            <?php else: ?>
+              <div class="flex justify-center items-center w-full h-full bg-gray-200">
+                <i data-lucide="search" class="w-12 h-12 text-gray-400"></i>
+              </div>
+            <?php endif; ?>
+
+            <!-- Overlay with search icon -->
+            <div class="flex absolute inset-0 justify-center items-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-primary/50">
+              <div class="p-3 bg-white rounded-full transition-transform duration-300 transform translate-y-4 group-hover:translate-y-0 text-primary">
+                <i data-lucide="search" class="w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project info -->
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-2">
+              <span class="py-1 px-2 text-xs font-semibold rounded text-cta bg-cta/10">
+                <?php echo esc_html($project["category"]); ?>
+              </span>
+              <span class="text-xs text-accent">
+                <?php echo esc_html($project["location"]); ?>
+              </span>
+            </div>
+            <h3 class="mb-2 text-xl font-bold text-primary"><?php echo esc_html(
+                $project["title"],
+            ); ?></h3>
+            <p class="text-sm text-accent"><?php echo esc_html(
+                $project["description"],
+            ); ?></p>
+          </div>
+        </div>
+      <?php
+      endforeach; ?>
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center" data-motion="fade-up" data-delay="0.6">
       <a
-        href="<?php echo home_url('/contact'); ?>"
-        class="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full font-semibold text-sm whitespace-nowrap"
+        href="<?php echo esc_url($ctaUrl); ?>"
+        class="inline-flex gap-3 items-center py-4 px-8 text-lg font-semibold text-white rounded-lg shadow-lg transition-colors duration-300 hover:shadow-xl bg-primary hover:bg-primary/90"
         data-motion="hover-lift">
-        Start a Project
-        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <?php echo esc_html($ctaText); ?>
+        <i data-lucide="arrow-right" class="w-5 h-5"></i>
       </a>
     </div>
 
   </div>
 </section>
+
+<!-- Project Modal -->
+<div id="<?php echo esc_attr(
+    $modalId,
+); ?>" class="flex fixed inset-0 z-50 justify-center items-center p-4 bg-black/80" style="display: none;">
+  <div class="overflow-hidden relative w-full max-w-4xl bg-white rounded-lg">
+    <!-- Close button -->
+    <button
+      class="absolute top-4 right-4 z-10 p-2 text-white rounded-full transition-colors duration-200 cursor-pointer bg-primary/50 hover:bg-primary"
+      onclick="closeModal('<?php echo esc_attr($modalId); ?>')">
+        <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <!-- Content will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Grab the dynamic IDs from PHP
+  const blockId = '<?php echo esc_attr($blockId); ?>';
+  const modalId = '<?php echo esc_attr($modalId); ?>';
+  const projects = <?php echo wp_json_encode($projects); ?>;
+
+  // We target the container via data attribute to avoid ID conflicts with the nav anchor
+  const container = document.querySelector(`[data-block-id="${blockId}"]`);
+  const modal = document.getElementById(modalId);
+
+  if (!container || !modal) return;
+
+  // Category filtering
+  function initCategoryFilters() {
+    const filterButtons = container.querySelectorAll('.category-filter');
+    const projectCards = container.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const category = this.dataset.category;
+
+        // Update active button UI
+        filterButtons.forEach(btn => {
+          btn.classList.remove('bg-primary', 'text-white', 'border-primary');
+          btn.classList.add('bg-white', 'text-accent');
+        });
+        this.classList.add('bg-primary', 'text-white', 'border-primary');
+
+        // Filter cards
+        projectCards.forEach(card => {
+          card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+        });
+      });
+    });
+  }
+
+  // Modal logic
+  function initModal() {
+    const projectCards = container.querySelectorAll('.project-card');
+
+    projectCards.forEach(card => {
+      card.addEventListener('click', function() {
+        const projectId = this.dataset.projectId;
+        // String comparison is safer as dataset often returns strings
+        const project = projects.find(p => String(p.id) === String(projectId));
+
+        if (project) {
+          showModal(project);
+        }
+      });
+    });
+
+    // Close modal on backdrop click
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) window.closeModal(modalId);
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display !== 'none') {
+        window.closeModal(modalId);
+      }
+    });
+  }
+
+  function showModal(project) {
+    const modalContent = modal.querySelector('.modal-content');
+
+    modalContent.innerHTML = `
+      <div class="relative pb-[56.25%] bg-gray-100">
+        ${project.image ? 
+          `<img src="${project.image}" alt="${project.title}" class="object-cover absolute inset-0 w-full h-full">` : 
+          `<div class="flex absolute inset-0 justify-center items-center"><i data-lucide="camera" class="w-12 h-12 text-gray-400"></i></div>`
+        }
+      </div>
+
+      <div class="p-8">
+        <div class="flex justify-between items-center mb-4">
+          <span class="py-1 px-2 text-xs font-bold tracking-wider uppercase rounded text-cta bg-cta/10">
+            ${project.category}
+          </span>
+          <div class="flex items-center text-sm text-accent">
+            <i data-lucide="map-pin" class="mr-2 w-4 h-4"></i>
+            ${project.location}
+          </div>
+        </div>
+        <h3 class="mb-3 text-3xl font-bold text-primary">${project.title}</h3>
+        <p class="text-lg leading-relaxed text-accent">${project.description}</p>
+      </div>
+    `;
+
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // IMPORTANT: Refresh Lucide icons for the newly injected HTML
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  }
+
+  // Define global close function
+  window.closeModal = function(id) {
+    const targetModal = document.getElementById(id);
+    if (targetModal) {
+      targetModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Initialize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initCategoryFilters();
+      initModal();
+    });
+  } else {
+    initCategoryFilters();
+    initModal();
+  }
+})();
+</script>
+
+<style>
+/* Custom styles for the work block */
+#<?php echo esc_attr($blockId); ?> .category-filter {
+  transition: all 0.3s ease;
+}
+
+#<?php echo esc_attr($blockId); ?> .project-card {
+  transition: all 0.3s ease;
+}
+
+#<?php echo esc_attr($blockId); ?> .project-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Modal styles */
+#<?php echo esc_attr($modalId); ?> {
+  transition: opacity 0.3s ease;
+}
+</style>

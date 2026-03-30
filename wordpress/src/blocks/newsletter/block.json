@@ -1,0 +1,61 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "summit-roofing/newsletter",
+	"version": "1.0.0",
+	"title": "Newsletter Subscribe",
+	"category": "summit-roofing",
+	"description": "Newsletter subscription form with success states and animations",
+	"supports": {
+		"html": false,
+		"align": ["full"],
+		"anchor": true
+	},
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": "Subscribe to Our Newsletter"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": "Stay updated with our latest offers, promotions and roofing tips"
+		},
+		"features": {
+			"type": "array",
+			"default": ["Monthly Updates", "Expert Tips", "Special Offers"]
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Subscribe"
+		},
+		"placeholderText": {
+			"type": "string",
+			"default": "Your email address"
+		},
+		"privacyText": {
+			"type": "string",
+			"default": "We respect your privacy. You can unsubscribe at any time."
+		},
+		"successTitle": {
+			"type": "string",
+			"default": "Success!"
+		},
+		"successMessage": {
+			"type": "string",
+			"default": "Thank you! Your roofing estimate request has been received."
+		},
+		"errorTitle": {
+			"type": "string",
+			"default": "Something Went Wrong"
+		},
+		"errorMessage": {
+			"type": "string",
+			"default": "Please try again or contact us directly."
+		}
+	},
+	"textdomain": "summit-roofing",
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}
+
