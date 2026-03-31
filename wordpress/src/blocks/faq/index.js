@@ -1,8 +1,5 @@
 import { registerBlockType } from "@wordpress/blocks";
-import {
-	useBlockProps,
-	InspectorControls,
-} from "@wordpress/block-editor";
+import { useBlockProps, InspectorControls } from "@wordpress/block-editor";
 import {
 	PanelBody,
 	TextControl,
@@ -10,6 +7,7 @@ import {
 	Button,
 	ToggleControl,
 } from "@wordpress/components";
+import { ChevronDown, CircleHelp } from "lucide-react";
 import { __ } from "@wordpress/i18n";
 import metadata from "./block.json";
 
@@ -209,7 +207,7 @@ function Edit({ attributes, setAttributes }) {
 	// ── FAQ helpers ──────────────────────────────────────────────────────
 	const updateFAQItem = (index, key, value) => {
 		const updated = faqItems.map((item, i) =>
-			i === index ? { ...item, [key]: value } : item
+			i === index ? { ...item, [key]: value } : item,
 		);
 		setAttributes({ faqItems: updated });
 	};
@@ -339,9 +337,7 @@ function Edit({ attributes, setAttributes }) {
 						<div className="faq-editor-header">
 							<div className="faq-editor-eyebrow">
 								<div className="faq-editor-eyebrow-line left" />
-								<span className="faq-editor-eyebrow-text">
-									{eyebrowText}
-								</span>
+								<span className="faq-editor-eyebrow-text">{eyebrowText}</span>
 								<div className="faq-editor-eyebrow-line right" />
 							</div>
 							<h2 className="faq-editor-heading">{heading}</h2>
@@ -366,18 +362,7 @@ function Edit({ attributes, setAttributes }) {
 										<p className="faq-editor-question-text">
 											{item.question || `Question ${index + 1}`}
 										</p>
-										<svg
-											className="faq-editor-chevron"
-											xmlns="http://www.w3.org/2000/svg"
-											viewBox="0 0 20 20"
-											fill="currentColor"
-										>
-											<path
-												fillRule="evenodd"
-												d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-												clipRule="evenodd"
-											/>
-										</svg>
+										<ChevronDown className="faq-editor-chevron" size={20} />
 									</div>
 
 									<div className="faq-editor-item-answer">
@@ -393,18 +378,10 @@ function Edit({ attributes, setAttributes }) {
 						{showCTA && (
 							<div className="faq-cta-preview">
 								<div className="faq-cta-icon">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 20 20"
-										fill="currentColor"
+									<CircleHelp
+										strokeWidth={2}
 										style={{ width: "2rem", height: "2rem" }}
-									>
-										<path
-											fillRule="evenodd"
-											d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-											clipRule="evenodd"
-										/>
-									</svg>
+									/>
 								</div>
 								<h3 className="faq-cta-heading">{ctaHeading}</h3>
 								<p className="faq-cta-subheading">{ctaSubheading}</p>

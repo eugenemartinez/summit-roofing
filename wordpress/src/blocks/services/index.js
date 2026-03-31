@@ -15,6 +15,8 @@ import {
 	ClipboardList,
 	Zap,
 	Leaf,
+	Check,
+	ArrowRight,
 } from "lucide-react";
 import { __ } from "@wordpress/i18n";
 import metadata from "./block.json";
@@ -37,39 +39,6 @@ const ICON_OPTIONS = [
 	{ label: "Emergency (Storm)", value: "storm" },
 	{ label: "Eco-Friendly (Leaf)", value: "leaf" },
 ];
-
-// ── Check icon (feature list) ─────────────────────────────────────────────
-const CheckIcon = () => (
-	<svg
-		style={{ width: "1rem", height: "1rem", flexShrink: 0 }}
-		fill="currentColor"
-		viewBox="0 0 20 20"
-	>
-		<path
-			fillRule="evenodd"
-			d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-			clipRule="evenodd"
-		/>
-	</svg>
-);
-
-// ── Arrow icon (banner CTA) ───────────────────────────────────────────────
-const ArrowIcon = () => (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		style={{ width: "1.25rem", height: "1.25rem", marginLeft: "0.5rem" }}
-		fill="none"
-		viewBox="0 0 24 24"
-		stroke="currentColor"
-	>
-		<path
-			strokeLinecap="round"
-			strokeLinejoin="round"
-			strokeWidth={2}
-			d="M14 5l7 7m0 0l-7 7m7-7H3"
-		/>
-	</svg>
-);
 
 // ── Editor styles ─────────────────────────────────────────────────────────
 const editorStyles = `
@@ -542,7 +511,11 @@ function Edit({ attributes, setAttributes }) {
 									<ul className="services-editor-features">
 										{service.features.map((feat, fi) => (
 											<li key={fi} className="services-editor-feature-item">
-												<CheckIcon />
+												<Check
+													size={16}
+													strokeWidth={3}
+													style={{ flexShrink: 0 }}
+												/>
 												{feat}
 											</li>
 										))}
@@ -575,7 +548,11 @@ function Edit({ attributes, setAttributes }) {
 							</div>
 							<span className="services-editor-banner-cta">
 								{bannerCtaText}
-								<ArrowIcon />
+								<ArrowRight
+									size={20}
+									style={{ marginLeft: "0.5rem" }}
+									strokeWidth={2}
+								/>
 							</span>
 						</div>
 					</div>
@@ -590,4 +567,3 @@ registerBlockType(metadata.name, {
 	edit: Edit,
 	save: () => null,
 });
-

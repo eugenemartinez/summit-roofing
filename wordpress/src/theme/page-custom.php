@@ -168,9 +168,10 @@ get_header(); ?>
 
         <div class="p-6 space-y-1 text-center rounded-xl border bg-card border-border">
           <div class="mx-auto w-fit" data-motion="spin" data-duration="3">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="16,3 30,28 2,28" fill="var(--color-primary)" />
-            </svg>
+            <i 
+              data-lucide="triangle" 
+              class="w-8 h-8 fill-current text-primary"
+            ></i>
           </div>
           <p class="text-sm font-medium">spin</p>
           <p class="text-xs text-muted-foreground">continuous 360°</p>
