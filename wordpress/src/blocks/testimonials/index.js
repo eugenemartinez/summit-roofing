@@ -13,6 +13,7 @@ import {
 	RangeControl,
 	Button,
 } from "@wordpress/components";
+import { Quote, Star, MapPin, ShieldCheck, Clock, Award } from "lucide-react";
 import { __ } from "@wordpress/i18n";
 import metadata from "./block.json";
 
@@ -30,27 +31,18 @@ const FALLBACK_AVATARS = [
 const Stars = ({ rating }) => (
 	<div style={{ display: "flex", gap: "2px" }}>
 		{Array.from({ length: 5 }, (_, i) => (
-			<i
+			<Star
 				key={i}
-				data-lucide="star"
-				style={{
-					width: "1rem",
-					height: "1rem",
-					color: i < rating ? "#FACC15" : "#D1D5DB",
-					fill: i < rating ? "#FACC15" : "none",
-				}}
+				size={16}
+				color={i < rating ? "#FACC15" : "#D1D5DB"}
+				fill={i < rating ? "#FACC15" : "none"}
 			/>
 		))}
 	</div>
 );
 
 // ── Quote icon ────────────────────────────────────────────────────────────
-const QuoteIcon = () => (
-	<i
-		data-lucide="quote"
-		style={{ width: "1.25rem", height: "1.25rem", color: "#ffffff" }}
-	/>
-);
+const QuoteIcon = () => <Quote size={20} color="#ffffff" fill="#ffffff" />;
 
 // ── Editor styles ─────────────────────────────────────────────────────────
 const editorStyles = `
@@ -554,14 +546,7 @@ function Edit({ attributes, setAttributes }) {
 												{testimonial.name}
 											</p>
 											<p className="testimonials-editor-location">
-												<i
-													data-lucide="map-pin"
-													style={{
-														width: "0.75rem",
-														height: "0.75rem",
-														marginRight: "4px",
-													}}
-												/>
+												<MapPin size={12} style={{ marginRight: "4px" }} />
 												{testimonial.location}
 											</p>
 										</div>
@@ -594,11 +579,7 @@ function Edit({ attributes, setAttributes }) {
 						{/* Badges row */}
 						<div className="testimonials-editor-badges">
 							<div className="testimonials-editor-badge">
-								<i
-									data-lucide="star"
-									className="testimonials-editor-badge-icon"
-									style={{ width: "1.5rem", height: "1.5rem" }}
-								/>
+								<Star size={24} className="testimonials-editor-badge-icon" />
 								<div>
 									<p className="testimonials-editor-badge-title">
 										{reviewScore}
@@ -609,10 +590,9 @@ function Edit({ attributes, setAttributes }) {
 								</div>
 							</div>
 							<div className="testimonials-editor-badge">
-								<i
-									data-lucide="file-text"
+								<ShieldCheck
+									size={24}
 									className="testimonials-editor-badge-icon"
-									style={{ width: "1.5rem", height: "1.5rem" }}
 								/>
 								<div>
 									<p className="testimonials-editor-badge-title">{bbbRating}</p>
@@ -622,11 +602,7 @@ function Edit({ attributes, setAttributes }) {
 								</div>
 							</div>
 							<div className="testimonials-editor-badge">
-								<i
-									data-lucide="clock"
-									className="testimonials-editor-badge-icon"
-									style={{ width: "1.5rem", height: "1.5rem" }}
-								/>
+								<Clock size={24} className="testimonials-editor-badge-icon" />
 								<div>
 									<p className="testimonials-editor-badge-title">
 										{yearsTitle}
